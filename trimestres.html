@@ -51,17 +51,17 @@
             <form action="" id="formulario">
                 <label for="">
                     Trimestre
-                    <input id="nombre" type="text" required>
+                    <input name="nombre" type="text" required>
                 </label>
 
                 <label for="fecha_inicio">
                     Fecha de inicio
-                    <input id="fecha_inicio" type="date" required>
+                    <input name="fecha_inicio" type="date" required>
                 </label>
 
                 <label for="fecha_fin">
                     Fecha de fin
-                    <input id="fecha_fin" type="date" required>
+                    <input name="fecha_fin" type="date" required>
                 </label>
 
                 <div class="footer">
@@ -104,6 +104,36 @@
 
         </section>
     </main>
+
+    <!-- Incluir el modelos ttrimestres para manipular la coleccion -->
+    <script type="module">
+        import {guardarTrimestre} from "./src/modelos/trimestres.js";
+
+        //Obtener el formulario
+        const formulario = document.getElementById("formulario");
+
+        //Obtener boton guardar
+        const botonGuardar = document.getElementById("guardar");
+
+        ///Agregar un evento al boton guardar
+        botonGuardar.addEventListener("click", () => {
+            //Obtener los datos del formulario
+            const nombre = formulario.nombre.value;
+            const fecha_inicio = formulario.fecha_inicio.value;
+            const fecha_fin = formulario.fecha_fin.value;
+
+            //Crear un objecto con los datos del formulario
+            const datos = {
+                nombre,
+                fecha_inicio,
+                fecha_fin
+            };
+        
+            //Guardar los datos
+            guardarTrimestre(datos);
+        });
+
+    </script>
 
 </body>
 
