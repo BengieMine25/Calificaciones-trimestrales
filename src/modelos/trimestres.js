@@ -9,7 +9,8 @@ import {
     addDoc,
     doc,
     getDoc,
-    updateDoc } from 'firebase/firestore' 
+    updateDoc, 
+    QuerySnapshot} from 'firebase/firestore' 
 
     //Conectarnos a la base de datos
 export const db = getFirestore();
@@ -17,4 +18,15 @@ export const db = getFirestore();
 //Guardar un trimestre
 export const guardarTrimestre = (datos) => {
     addDoc(collection(db, 'trimestres'), {datos})
+}
+
+//Obtener la coleccion de trimestres y mantener el estado actualizado
+export const obtenerTrimestres = (callback) => {
+    onSnapshot(collection(db, "trimestres"), (querySnapshot) => {
+        const trimestres = [];
+        querySnapshot.forEach((doc) => {
+            trimestres.push({ ...doc.data(), id: doc.id})
+        })
+        callback(trimestres)
+    })
 }

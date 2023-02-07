@@ -107,7 +107,18 @@
 
     <!-- Incluir el modelos ttrimestres para manipular la coleccion -->
     <script type="module">
-        import {guardarTrimestre} from "./src/modelos/trimestres.js";
+        import {guardarTrimestre, obtenerTrimestres} from "./src/modelos/trimestres.js";
+
+        //Obtener los datos del servidor usando el evento
+        //DOMContentload
+        document.addEventListener("DOMContentloaded", () => {
+            obtenerTrimestres((datos) => {
+                datos.forEach((doc) => {
+                    
+                })
+            });
+        });
+
 
         //Obtener el formulario
         const formulario = document.getElementById("formulario");
@@ -131,8 +142,11 @@
         
             //Guardar los datos
             guardarTrimestre(datos);
+
+            //Limpiar el formulario
+            guardarTrimestre.reset();
+            
         });
-        
     </script>
 
 </body>
