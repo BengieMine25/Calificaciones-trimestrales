@@ -86,19 +86,8 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>I Trimetre</td>
-                        <td>01/01/2023 - 30/04/2023</td>
-                        <td>
-                            <div class="tareas">
-                                <button class="editar">Editar</button>
-                                <button class="eliminar">Eliminar</button>
-                            </div>
-                        </td>
-                        
-                    </tr>
+                <tbody id="trimestres">
+                    
                 </tbody>
             </table>
 
@@ -114,7 +103,24 @@
         document.addEventListener("DOMContentloaded", () => {
             obtenerTrimestres((datos) => {
                 datos.forEach((doc) => {
+
+                    tbody.innerHTML += ´
+
+                    datos.forEach((trimestres) => {
+
                     
+                    <tr>
+                        <td>1</td>
+                        <td>I Trimestre</td>
+                        <td>01/01/2023 - 30/04/2023</td>
+                        <td>
+                            <div>
+                                <button class="editar">Editar</button>
+                                <button class="eliminar">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    ´;
                 })
             });
         });
