@@ -1,6 +1,5 @@
 //Importar la configuracion
-import { app } from '../js/firebase'
-
+import { app } from "../js/firebase"
 // Importar los modulos de firebase necesarios
 import {
     getFirestore, 
@@ -17,5 +16,5 @@ export const db = getFirestore();
 
 //Guardar un trimestre
 export const guardarTrimestre = (datos) => {
-    addDoc(collection(db, 'trimestres'), datos)
+    addDoc(collection(db, 'trimestres'), {datos})
 }
